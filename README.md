@@ -1,31 +1,30 @@
 # Arpasing-Voicebank
-A test voicebank for my ver 2 ARPAsing reclist, it consists of 2 pitches `F3` and `C3`. This voicebank has a complete VV transition, complete CC without [hh_C] and [dx_c], and has extra consonants `dr`, `tr`, `kr`, and `st`
+this voicebank uses my ver 2 ARPAsing reclist, it consists of 4 pitches `G#2`, `C3`, `F3`, and `A#3`. This voicebank has a complete VV transition, complete CC without [hh_C] and [dx_c], and has extra consonants `dr`, `tr`, `kr`, and `st`
 
 | Arpabet | IPA | Word Sample |
 | ------------- | ------------- | ------------- |
 **Vowels**
 | aa  | ɑ  | cot
-| aar  | ɒɹ  | star
+| ar  | ɒɹ  | star
 | ae  | @  | {  | {  | æ  | bat
-| aen  | eən  | ban
-| aeng | ɛ̃ŋ  | bank
+| ean/ea n  | eən  | ban
+| eang/ea ng | ɛ̃ŋ  | bank
 | ah   ʌ  | but
 | ao  | ɒ  | caught
 | ao  | o  | bowl
-| aor  | ɔɹ  | pour
+| or  | ɔɹ  | pour
 | ax  | ə  | comma
 | eh  | ɛ  | bet
-| ehr  | eɹ  | bear
+| air  | eɹ  | bear
 | er  | ə˞  | bird
 | ih | ɪ  | bit
-| ihng | ɪ̃ŋ  | wing
-| ihr | iɹ  | beer
+| ix ng | ɪ̃ŋ  | wing
+| ir | iɹ  | beer
 | iy  | i  | beat
 | uh  | ʊ  | book
 | uw  | u  | boot
 | uwr  | ʊɹ  | poor
 | aw  | aʊ  | about
-| awn  | aʊ̃n  | pound
 | ay  | aɪ  | bite
 | ey  | eɪ  | bait
 | ow  | oʊ  | boat
@@ -57,3 +56,6 @@ A test voicebank for my ver 2 ARPAsing reclist, it consists of 2 pitches `F3` an
 | y  | j  | yes
 | z  | z  | zoo
 | zh | ʒ  | pleasure
+
+# Japanese CVVC Voicebank
+it's a CVVC voicebank with some VCV aliasing, it's romaji and kana aliased so the romaji one can be used on the same english track
