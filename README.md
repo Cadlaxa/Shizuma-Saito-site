@@ -7,7 +7,7 @@ this voicebank uses my ver 2 ARPAsing reclist, it consists of 4 pitches `G#2`, `
 | aa  | ɑ  | cot
 | ar  | ɒɹ  | star
 | al  |  ɒl | hall
-| ae  | @  | {  | {  | æ  | bat
+| ae  | @ | bat
 | ean/ea n  | eən  | ban
 | eang/ea ng | ɛ̃ŋ  | bank
 | ah  | ʌ  | but
