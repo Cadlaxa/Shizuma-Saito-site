@@ -6,24 +6,28 @@ this voicebank uses my ver 2 ARPAsing reclist, it consists of 4 pitches `G#2`, `
 **Vowels**
 | aa  | ɑ  | cot
 | ar  | ɒɹ  | star
+| al  |   | hall
 | ae  | @  | {  | {  | æ  | bat
 | ean/ea n  | eən  | ban
 | eang/ea ng | ɛ̃ŋ  | bank
-| ah   ʌ  | but
+| ah  | ʌ  | but
 | ao  | ɒ  | caught
 | ao  | o  | bowl
 | or  | ɔɹ  | pour
+| ol  | ɔl | fall
 | ax  | ə  | comma
 | eh  | ɛ  | bet
-| air  | eɹ  | bear
+| air  | eɪɹ  | bear
 | er  | ə˞  | bird
 | ih | ɪ  | bit
 | ix ng | ɪ̃ŋ  | wing
 | ir | iɹ  | beer
+| il | il | heal
 | iy  | i  | beat
 | uh  | ʊ  | book
 | uw  | u  | boot
-| uwr  | ʊɹ  | poor
+| ur  | ʊɹ  | poor
+| ul  |  ʊl | pool
 | aw  | aʊ  | about
 | ay  | aɪ  | bite
 | ey  | eɪ  | bait
@@ -34,6 +38,7 @@ this voicebank uses my ver 2 ARPAsing reclist, it consists of 4 pitches `G#2`, `
 | ch  | tʃ  | cheese
 | d  | d  | deep
 | dh  | ð  | the
+| dr | dʒɹ | drive
 | dx  | ɾ  | butter
 | f  | f  | fight
 | g | g  | guy
@@ -50,6 +55,7 @@ this voicebank uses my ver 2 ARPAsing reclist, it consists of 4 pitches `G#2`, `
 | s  | s  | sigh
 | sh  | ʃ  | shy
 | t  | t  | tie
+| tr | tʃɹ | try
 | th | θ  | thin
 | v  | v  | vegetable
 | w  | w  | water
