@@ -27,7 +27,7 @@ this voicebank uses my ver 2 ARPAsing reclist, it consists of 4 pitches `G#2`, `
 | uh  | ʊ  | book
 | uw  | u  | boot
 | ur  | ʊɹ  | poor
-| ul  |  ʊl | pool
+| ul  |  ul | pool
 | aw  | aʊ  | about
 | ay  | aɪ  | bite
 | ey  | eɪ  | bait
