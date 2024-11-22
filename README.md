@@ -87,7 +87,7 @@ this voicebank uses my ver 2 ARPAsing reclist, it consists of 4 pitches `G#2`, `
 | z  | z  | **z**oo
 | zh | ʒ  | plea**s**ure
 
-# Japanese CVVC Voicebank
+# Japanese CVVC Voicebank (with some VCV aliases)
 it's a CVVC voicebank with some VCV aliasing, it's romaji and kana aliased so the romaji one can be used on the same english track. `dz`, `tw`, `ʑ`, `bw` etc can be used if the english phonemes are incorporated to substitute the missing sounds
 
 | Romaji | IPA | Kana Sample |
