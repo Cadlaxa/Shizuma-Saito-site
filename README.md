@@ -1,6 +1,8 @@
 # Arpasing-Voicebank
 this voicebank uses my ver 2 ARPAsing reclist, it consists of 4 pitches `G#2`, `C3`, `F3`, and `A#3`. This voicebank has a complete VV transition, complete CC without [hh_C] and [dx_c], and has extra consonants `dr`, `tr`, `kr`, and `st`
 
+![Frame 1 (1)](https://github.com/user-attachments/assets/c28d3dfa-feeb-4c16-b38a-2c9ac0a66284)
+
 | Arpabet | IPA | Word Sample |
 | ------------- | ------------- | ------------- |
 **Vowels**
