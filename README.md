@@ -104,10 +104,7 @@ it's a CVVC voicebank with some VCV aliasing, it's romaji and kana aliased so th
 | by  | bʲ | **びょ**うき
 | ch  | tɕ  | **ち**かい
 | d  | d  | **ど**うも
-| dw  | d w | dwarf
-| dy  | d j | dya
 | f  | ɸ  | **ふ**じ
-| fy  | f j  | fyoom
 | g | g  | りん**ご**
 | gy | ɡʲ  | き**ぎょ**う
 | h  | h  | **はは**
@@ -130,5 +127,5 @@ it's a CVVC voicebank with some VCV aliasing, it's romaji and kana aliased so th
 | ts | ts | いっ**つ**い
 | vf  | ʔ̞ or ʔ̰  | **'ooh** **'ah**
 | w  | w  | **わ**さび
-| y  | j  | yes
+| y  | j  | **いぇ**
 | z  | z  | ざ**ぜ**ん
