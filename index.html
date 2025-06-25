@@ -207,6 +207,15 @@
             background-size: 98px;
             background-position: center;
             background-repeat: repeat;
+            animation: moveDots 65s linear infinite;
+        }
+        @keyframes moveDots {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 100vw 100vh;
+            }
         }
 
         :root {
