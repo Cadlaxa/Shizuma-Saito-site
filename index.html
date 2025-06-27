@@ -7411,6 +7411,51 @@
 		});
 	}
 	</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const clickSoundPath = 'resources/click_sfx.mp3';
+            let clickAudio = null;
+            try {
+                clickAudio = new Audio(clickSoundPath);
+                clickAudio.volume = 0.3;
+                clickAudio.preload = 'auto';
+            } catch (e) {
+                console.error("Error creating Audio object for click SFX:", e);
+                clickAudio = null;
+            }
+            const interactiveSelectors =
+                'a, button, input[type="button"], input[type="submit"], [role="button"], [onclick]';
+            document.body.addEventListener('click', (event) => {
+
+                if (clickAudio) {
+                    if (event.target.closest(interactiveSelectors)) {
+                        clickAudio.currentTime = 0;
+                        clickAudio.play().catch(e => {
+                            console.warn("Click SFX playback prevented:", e);
+                        });
+                    }
+                }
+            });
+
+            let firstInteractionOccurred = false;
+            document.body.addEventListener('click', () => {
+                if (!firstInteractionOccurred && clickAudio) {
+                    clickAudio.muted = true;
+                    clickAudio.play().then(() => {
+                        clickAudio.pause();
+                        clickAudio.currentTime = 0;
+                        clickAudio.muted = false;
+                        firstInteractionOccurred = true;
+                    }).catch(e => {
+                        console.warn("Initial silent click SFX preload prevented:", e);
+                        firstInteractionOccurred = true;
+                    });
+                }
+            }, {
+                once: true
+            });
+        });
+    </script>
 </body>
 
 </html>
