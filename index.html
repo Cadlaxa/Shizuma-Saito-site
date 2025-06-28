@@ -22,6 +22,7 @@
         href="https://fonts.googleapis.com/css2?display=swap&family=Gloock:ital,wght@0,400;1,400&family=Golos+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Changa:ital,wght@0,400;1,400"
         rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resources/piano.css">
     <noscript>
         <style>
             body {
@@ -290,8 +291,8 @@
                                         </div>
                                     </div>
                                     <ul id="buttons01" class="buttons">
-                                        <li><a href="https://mega.nz/file/U3REUSKa#wGI99ukGPfS-6Otm0Xen1KRRUSU3Khz66ZzEGb2os84"
-                                                class="button n01" role="button">Download</a></li>
+                                        <li><a href="#pianotune"
+                                                class="button n01" role="button">Try me</a></li>
                                         <li><a href="https://drive.google.com/drive/folders/1mpHOrEJTh8bVw270-6vbKW1Ikx7SnW1V"
                                                 class="button n02" role="button">V102 (Latest)</a></li>
                                     </ul>
@@ -301,7 +302,7 @@
                     </div>
                     
                     <div id="container08" class="container columns full">
-                        <div class="wrapper">
+                        <div class="wrapper"  data-onvisible-trigger="1">
                         <br></br>
                         <h2 id="text08" class="style2">Phonetic Systems</h2>
                             <div class="inner">
@@ -1159,6 +1160,71 @@
                         <li><a href="#scrollpoint1" class="button n01" role="button">scroll up</a></li>
                     </ul>
                 </section>
+                
+                <section id="pianotune-section" data-onvisible-trigger="1">
+                    <div id="piano-section" class="container default full">
+                        <div class="piano-controls">
+                            <div class="controls-left">
+                                <div class="control-group">
+                                    <span>Language</span>
+                                    <div class="toggle-options" id="language-switches">
+                                        <div class="toggle-option active" data-lang="en">EN</div>
+                                        <div class="toggle-option" data-lang="ja">JP</div>
+                                        <div class="toggle-option" data-lang="fil">FIL</div>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <span>Sound Type</span>
+                                    <div class="toggle-options" id="sound-type-switches">
+                                        <div class="toggle-option active" data-type="core">Core</div>
+                                        <div class="toggle-option" data-type="soft">Soft</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="controls-right">
+                                <div class="control-group">
+                                    <span>Volume</span>
+                                    <input type="range" min="0" max="1" value="0.5" step="any" id="volume-slider">
+                                </div>
+
+                                <div class="control-group">
+                                    <span>Show Keys</span>
+                                    <label class="switch-container">
+                                        <input type="checkbox" checked id="show-keys-toggle">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="note-fall-container"></div>
+
+                        <ul class="piano-keys">
+                            <li class="key white" data-key="a"><span>a</span></li>
+                            <li class="key black" data-key="w"><span>w</span></li>
+                            <li class="key white" data-key="s"><span>s</span></li>
+                            <li class="key black" data-key="e"><span>e</span></li>
+                            <li class="key white" data-key="d"><span>d</span></li>
+                            <li class="key white" data-key="f"><span>f</span></li>
+                            <li class="key black" data-key="t"><span>t</span></li>
+                            <li class="key white" data-key="g"><span>g</span></li>
+                            <li class="key black" data-key="y"><span>y</span></li>
+                            <li class="key white" data-key="h"><span>h</span></li>
+                            <li class="key black" data-key="u"><span>u</span></li>
+                            <li class="key white" data-key="j"><span>j</span></li>
+                            <li class="key white" data-key="k"><span>k</span></li>
+                            <li class="key black" data-key="o"><span>o</span></li>
+                            <li class="key white" data-key="l"><span>l</span></li>
+                            <li class="key black" data-key="p"><span>p</span></li>
+                            <li class="key white" data-key=";"><span>;</span></li>
+                        </ul>
+                    </div>
+                    <ul id="buttons06" class="buttons">
+                        <li><a href="#saito" class="button n01" role="button">go back</a></li>
+                    </ul>
+                </section>
+                
                 <section id="tos-section">
                     <div id="container02" class="container default full">
                         <div class="wrapper">
@@ -1363,5 +1429,6 @@
 	}
 	</script>
     <script src="resources/clicks.js"></script>
+    <script src="resources/piano.js"></script>
 </body>
 </html>

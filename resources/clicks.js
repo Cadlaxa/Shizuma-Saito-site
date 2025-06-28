@@ -9,9 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let hoverAudioBuffer = null; 
     let audioContext = null; 
     let firstInteractionOccurred = false; 
-    const messageBox = document.getElementById('messageBox');
-    const interactiveSelectors =
-        'a, button, input[type="button"], input[type="submit"], [role="button"], [onclick]';
+    const interactiveSelectors = `
+        a,
+        button,
+        image,
+        input,
+        select,
+        textarea,
+        [role="button"],
+        [role="link"],
+        [role="checkbox"],
+        [role="radio"],
+        [role="switch"],
+        [tabindex]:not([tabindex="-1"]),
+        [onclick],
+        [contenteditable="true"]
+        `;
+
 
     clickAudioFilePaths.forEach(path => {
         try {
@@ -80,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             source.playbackRate.value = minPitch + (Math.random() * (maxPitch - minPitch));
 
             const gainNode = audioContext.createGain();
-            gainNode.gain.value = 0.4; 
+            gainNode.gain.value = 0.6; 
             
             source.connect(gainNode).connect(audioContext.destination);
             source.start(0); 
@@ -132,17 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
             playPitchedHoverSound();
         }
     });
-    document.body.addEventListener('keydown', (event) => {
-        // Optional: Avoid triggering for modifier keys (Ctrl, Shift, etc.)
-        if (
-            event.key === "Shift" || event.key === "Control" || event.key === "Alt" ||
-            event.key === "Meta" || event.key === "CapsLock" || event.key === "Tab"
-        ) {
-            return;
-        }
-        playPitchedHoverSound();
-    });
-    
 });
 document.addEventListener('DOMContentLoaded', () => {
     const saitoSection = document.getElementById('saito-section');

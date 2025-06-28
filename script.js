@@ -1731,6 +1731,43 @@
         state: true,
         replay: false
     });
+    onvisible.add('#piano-section', {
+        style: 'flip-left',
+        speed: 1250,
+        intensity: 10,
+        threshold: 3,
+        delay: 1125,
+        state: true,
+        replay: true
+    });
+    /*
+    onvisible.add('.controls-left', {
+        style: 'slide-right',
+        speed: 1000,
+        intensity: 5,
+        threshold: 3,
+        delay: 1300,
+        state: true,
+        replay: true
+    });
+    onvisible.add('.controls-right', {
+        style: 'slide-left',
+        speed: 1000,
+        intensity: 5,
+        threshold: 3,
+        delay: 1300,
+        state: true,
+        replay: true
+    });*/
+    onvisible.add('#piano-section > .piano-keys', {
+        style: 'wipe-diagonal',
+        speed: 1200,
+        intensity: 5,
+        threshold: 3,
+        delay: 1700,
+        state: true,
+        replay: true
+    });
     onvisible.add('#container01', {
         style: 'flip-left',
         speed: 1250,
