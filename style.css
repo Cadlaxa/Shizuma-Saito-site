@@ -106,6 +106,61 @@ body {
     transition: background-color 0.8s ease, color 0.5s ease;
 }
 
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    border-radius: 12px;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    display: none;
+}
+
+.carousel-slide img.force-scale {
+    width: 200;
+    height: 200;
+    object-fit: contain;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 190, 93, 0.3);
+    border-radius: 10px;
+    border: none;
+    color: #feaf32;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 0 0.5em;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(255, 190, 93, 0.5);
+    transform: scale(1.1) translateY(-45%);
+}
+
+.carousel-btn.prev { left: 0; }
+.carousel-btn.next { right: 0; }
+
 ol,
 ul {
     list-style: none;
