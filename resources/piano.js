@@ -123,6 +123,8 @@ function scheduleLoop(key, audioBuffer, gainNode, loopData, nextStartTime) {
 }
 
 async function playTune(newKey) {
+    if (!isPianoSectionActive()) return;
+    
     initAudioContext(); 
     resumeAudioContext();
     createFallingNoteVisual(newKey);
@@ -338,9 +340,13 @@ const showHideKeys = () => {
     });
 };
 
-
 const pressedKeys = new Set();
 const heldMouseKeys = new Set();
+
+function isPianoSectionActive() {
+    const pianoSection = document.getElementById("piano-section");
+    return pianoSection && pianoSection.offsetParent !== null;
+}
 
 let allKeys = []; 
 pianoKeys.forEach(keyEl => {
@@ -384,24 +390,25 @@ pianoKeys.forEach(keyEl => {
 });
 
 document.addEventListener("keydown", e => {
-    if (allKeys.includes(e.key) && !e.repeat) {
+    const key = e.key.toLowerCase();
+    if (allKeys.includes(key) && !e.repeat && isPianoSectionActive()) {
         e.preventDefault();
-        if (!pressedKeys.has(e.key)) {
-            pressedKeys.add(e.key);
-            playTune(e.key);
+        if (!pressedKeys.has(key)) {
+            pressedKeys.add(key);
+            playTune(key);
         }
     }
 });
 
 document.addEventListener("keyup", e => {
-    if (allKeys.includes(e.key)) {
-        if (pressedKeys.has(e.key)) { 
-            pressedKeys.delete(e.key);
-            stopTune(e.key);
+    const key = e.key.toLowerCase();
+    if (allKeys.includes(key) && isPianoSectionActive()) {
+        if (pressedKeys.has(key)) {
+            pressedKeys.delete(key);
+            stopTune(key);
         }
     }
 });
-
 
 showKeysToggle.addEventListener("change", showHideKeys);
 volumeSlider.addEventListener("input", handleVolume);
