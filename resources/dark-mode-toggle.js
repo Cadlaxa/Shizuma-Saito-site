@@ -1,10 +1,11 @@
 const darkModeSound = new Audio("resources/sfx/darkmode.mp3");
 const lightModeSound = new Audio("resources/sfx/lightmode.mp3");
 
-// Detect and follow system theme preference
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-// Track current theme mode internally
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+const prefersLight = window.matchMedia('(prefers-color-scheme: light)'); 
+
+
 let currentMode = null;
 
 function toggleDarkMode(newState, playSound = true, updateCookie = true) {
@@ -29,13 +30,13 @@ function toggleDarkMode(newState, playSound = true, updateCookie = true) {
     }
 }
 
-// Manual toggle by clicking the dark mode button
+
 document.querySelector("div.dark-mode-toggle").addEventListener("click", function () {
     const darkreaderActive = document.querySelector(".darkreader");
     toggleDarkMode(darkreaderActive ? "off" : "on");
 }, false);
 
-// Set or get cookies
+
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -47,21 +48,35 @@ function getCookie(cname) {
     return document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith(name))?.substring(name.length) || "";
 }
 
-// Initialize theme on load
+
 window.addEventListener("load", function () {
     const darkModeCookie = getCookie("darkmode");
 
-    if (darkModeCookie === "on" || (darkModeCookie === "" && prefersDark.matches)) {
+    
+    if (prefersLight.matches && darkModeCookie === "on") {
+        toggleDarkMode("off", false, true); 
+    }
+    
+    else if (darkModeCookie === "on" || (darkModeCookie === "" && prefersDark.matches)) {
         toggleDarkMode("on", false, darkModeCookie !== "on");
     } else {
         toggleDarkMode("off", false, darkModeCookie !== "off");
     }
 }, false);
 
-// Watch for system theme changes
+
 if (window.matchMedia) {
     prefersDark.addEventListener("change", (e) => {
         const systemPref = e.matches ? "on" : "off";
-        toggleDarkMode(systemPref, true, true);
+        const darkModeCookie = getCookie("darkmode"); 
+
+        
+        
+        if (prefersLight.matches && darkModeCookie === "on") {
+            toggleDarkMode("off", true, true);
+        } else {
+            
+            toggleDarkMode(systemPref, true, true);
+        }
     });
 }
