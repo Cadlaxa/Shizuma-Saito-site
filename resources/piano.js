@@ -549,10 +549,6 @@ const warmUpKeys = [
 let hasPreloadedInitialPianoSamples = false;
 
 async function checkAndPreloadPianoSamples() {
-    if (hasPreloadedInitialPianoSamples || !isPianoSectionActive()) {
-        console.log("Preload skipped: already preloaded or piano section not active.");
-        return;
-    }
     initAudioContext();
     if (isPianoSectionActive()) {
         if (soundLoadingSpinner) {
