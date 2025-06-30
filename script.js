@@ -2139,10 +2139,10 @@ function autoSlide() {
 
 function resetAutoSlide() {
     clearInterval(slideInterval);
-    slideInterval = setInterval(autoSlide, 5000); // 5 seconds per slide
+    slideInterval = setInterval(autoSlide, 7000); // 7 seconds per slide
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
-    slideInterval = setInterval(autoSlide, 5000);
+    slideInterval = setInterval(autoSlide, 7000);
 });

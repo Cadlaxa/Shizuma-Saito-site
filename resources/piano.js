@@ -1,6 +1,6 @@
 
-const whiteKeysNotes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5'];
-const blackKeysNotes = ['C#4', 'D#4', 'F#4', 'G#4', 'A#4', 'C#5', 'D#5', 'F#5', 'G#5', 'A#5'];
+const whiteKeysNotes = ['C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F4', 'G4', 'A4'];
+const blackKeysNotes = ['C#3', 'D#3', 'F#3', 'G#3', 'A#3', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4'];
 const pianoKeys = document.querySelectorAll(".piano-keys .key");
 const volumeSlider = document.getElementById("volume-slider");
 const showKeysToggle = document.getElementById("show-keys-toggle");
@@ -20,13 +20,13 @@ const keyMap = {
 };
 
 
-let audioCtx; 
-let activeNotes = {}; 
+let audioCtx;
+let activeNotes = {};
 let sampleCache = {};
-const defaultFadeOutDuration = 0.3; 
-const INITIAL_SOUND_MIN_DURATION_MS = 500; 
-const CROSSFADE_ON_NEW_NOTE_DURATION = 0.2; 
-const LOOP_CROSSFADE_DURATION = 0.01; 
+const defaultFadeOutDuration = 0.3;
+const INITIAL_SOUND_MIN_DURATION_MS = 500;
+const CROSSFADE_ON_NEW_NOTE_DURATION = 0.2;
+const LOOP_CROSSFADE_DURATION = 0.01;
 
 
 const AUDIO_FILE_EXTENSION = '.mp3';
@@ -70,7 +70,7 @@ function resumeAudioContext() {
 
 async function loadSample(key, lang, type) {
     const cacheKey = `${key}_${lang}_${type}`;
-    const fileName = `${key}_${lang}_${type}${AUDIO_FILE_EXTENSION}`; 
+    const fileName = `${key}_${lang}_${type}${AUDIO_FILE_EXTENSION}`;
     const filePath = `${AUDIO_FILE_PATH_PREFIX}${fileName}`;
 
     if (sampleCache[cacheKey]) {
@@ -94,7 +94,7 @@ async function loadSample(key, lang, type) {
 
 function scheduleLoop(key, audioBuffer, gainNode, loopData, nextStartTime) {
     const noteInfo = activeNotes[key];
-    
+
     if (!noteInfo || noteInfo.stopScheduled) return;
     const source = audioCtx.createBufferSource();
     source.buffer = audioBuffer;
@@ -106,14 +106,14 @@ function scheduleLoop(key, audioBuffer, gainNode, loopData, nextStartTime) {
     const nextLoopStartTime = nextStartTime + currentLoopDuration;
 
     if (currentLoopDuration > LOOP_CROSSFADE_DURATION) {
-        
+
         noteInfo.loopTimer = setTimeout(() => {
             if (activeNotes[key] && activeNotes[key].isLooping && !activeNotes[key].stopScheduled) {
                 scheduleLoop(key, audioBuffer, gainNode, loopData, nextLoopStartTime - LOOP_CROSSFADE_DURATION);
             }
         }, (currentLoopDuration - LOOP_CROSSFADE_DURATION) * 1000);
     } else {
-        
+
         noteInfo.loopTimer = setTimeout(() => {
             if (activeNotes[key] && activeNotes[key].isLooping && !activeNotes[key].stopScheduled) {
                 scheduleLoop(key, audioBuffer, gainNode, loopData, nextLoopStartTime);
@@ -124,8 +124,8 @@ function scheduleLoop(key, audioBuffer, gainNode, loopData, nextStartTime) {
 
 async function playTune(newKey) {
     if (!isPianoSectionActive()) return;
-    
-    initAudioContext(); 
+
+    initAudioContext();
     resumeAudioContext();
     createFallingNoteVisual(newKey);
 
@@ -139,25 +139,25 @@ async function playTune(newKey) {
     const vol = parseFloat(volumeSlider.value);
 
     for (const key in activeNotes) {
-        if (key !== newKey) { 
+        if (key !== newKey) {
             const oldNoteInfo = activeNotes[key];
             if (oldNoteInfo && oldNoteInfo.gainNode) {
                 console.log(`Crossfading out old note '${key}' for new note '${newKey}'.`);
-                
-                performStop(key, CROSSFADE_ON_NEW_NOTE_DURATION); 
+
+                performStop(key, CROSSFADE_ON_NEW_NOTE_DURATION);
             }
-        } else { 
+        } else {
             if (activeNotes[newKey]) {
                 console.log(`Re-triggering note for ${newKey}.`);
-                
-                performStop(newKey, 0.001); 
+
+                performStop(newKey, 0.001);
             }
         }
     }
-    
+
     const gainNode = audioCtx.createGain();
     gainNode.connect(audioCtx.destination);
-    gainNode.gain.value = vol; 
+    gainNode.gain.value = vol;
 
     const visualElement = document.querySelector(`[data-key="${newKey}"]`);
 
@@ -165,15 +165,15 @@ async function playTune(newKey) {
         currentSource: null,
         gainNode: gainNode,
         visualElement: visualElement,
-        loopTimer: null, 
+        loopTimer: null,
         isLooping: false,
-        startTime: audioCtx.currentTime, 
-        stopScheduled: false, 
-        pendingStopTimeout: null 
+        startTime: audioCtx.currentTime,
+        stopScheduled: false,
+        pendingStopTimeout: null
     };
     activeNotes[newKey] = noteInfo;
 
-    
+
     if (visualElement) {
         visualElement.classList.add("active");
     }
@@ -181,16 +181,15 @@ async function playTune(newKey) {
     const loopData = loopPoints[newKey];
     const canLoop = loopData && newAudioBuffer.duration > loopData.loopEnd && loopData.loopEnd > loopData.loopStart;
 
-    
     const initialSource = audioCtx.createBufferSource();
     initialSource.buffer = newAudioBuffer;
     initialSource.connect(gainNode);
-    noteInfo.currentSource = initialSource; 
+    noteInfo.currentSource = initialSource;
 
     if (canLoop) {
-        initialSource.start(now, 0, loopData.loopStart); 
+        initialSource.start(now, 0, loopData.loopStart);
 
-        noteInfo.loopTransitionTimeout = setTimeout(() => { 
+        noteInfo.loopTransitionTimeout = setTimeout(() => {
             if (activeNotes[newKey] && (pressedKeys.has(newKey) || heldMouseKeys.has(newKey)) && !activeNotes[newKey].stopScheduled) {
                 console.log(`Transitioning ${newKey} to loop.`);
                 try {
@@ -202,20 +201,20 @@ async function playTune(newKey) {
                 noteInfo.isLooping = true;
             } else {
                 console.log(`Key ${newKey} released before loop initiated or stop was scheduled.`);
-                
+
             }
         }, INITIAL_SOUND_MIN_DURATION_MS);
     } else {
         initialSource.start(now);
         initialSource.onended = () => {
-            
+
             if (activeNotes[newKey] && activeNotes[newKey].currentSource === initialSource && !activeNotes[newKey].stopScheduled) {
                 console.log(`Note ${newKey} (non-looping) ended naturally.`);
                 if (activeNotes[newKey].visualElement) {
                     activeNotes[newKey].visualElement.classList.remove("active");
                 }
                 delete activeNotes[newKey];
-                
+
                 if (pressedKeys.has(newKey)) pressedKeys.delete(newKey);
                 if (heldMouseKeys.has(newKey)) heldMouseKeys.delete(newKey);
             }
@@ -234,7 +233,7 @@ function createFallingNoteVisual(note) {
     const noteDiv = document.createElement("div");
     noteDiv.classList.add("note-fall");
 
-    noteDiv.style.left = `${rect.left - pianoRect.left + rect.width / 2 - 10}px`; 
+    noteDiv.style.left = `${rect.left - pianoRect.left + rect.width / 2 - 10}px`;
     noteDiv.style.top = `0px`;
 
     container.appendChild(noteDiv);
@@ -248,28 +247,28 @@ function createFallingNoteVisual(note) {
 function performStop(key, fadeDuration = defaultFadeOutDuration) {
     const noteInfo = activeNotes[key];
     if (!noteInfo) return;
-    if (noteInfo.loopTimer) { 
+    if (noteInfo.loopTimer) {
         clearTimeout(noteInfo.loopTimer);
         noteInfo.loopTimer = null;
     }
-    if (noteInfo.pendingStopTimeout) { 
+    if (noteInfo.pendingStopTimeout) {
         clearTimeout(noteInfo.pendingStopTimeout);
         noteInfo.pendingStopTimeout = null;
     }
-    if (noteInfo.loopTransitionTimeout) { 
+    if (noteInfo.loopTransitionTimeout) {
         clearTimeout(noteInfo.loopTransitionTimeout);
         noteInfo.loopTransitionTimeout = null;
     }
 
-    noteInfo.stopScheduled = true; 
-    const { currentSource, gainNode, visualElement } = noteInfo; 
+    noteInfo.stopScheduled = true;
+    const { currentSource, gainNode, visualElement } = noteInfo;
     const now = audioCtx.currentTime;
 
     gainNode.gain.cancelScheduledValues(now);
     gainNode.gain.linearRampToValueAtTime(0, now + fadeDuration);
     console.log(`Fading out gain for ${key} over ${fadeDuration}s.`);
-    
-    if (currentSource && !currentSource.onended) { 
+
+    if (currentSource && !currentSource.onended) {
         try {
             currentSource.stop(now + fadeDuration + 0.01);
             console.log(`Source for ${key} scheduled to stop after fade.`);
@@ -281,11 +280,11 @@ function performStop(key, fadeDuration = defaultFadeOutDuration) {
         visualElement.classList.remove("active");
     }
     setTimeout(() => {
-        if (activeNotes[key] === noteInfo) { 
+        if (activeNotes[key] === noteInfo) {
             delete activeNotes[key];
             console.log(`Cleaned up activeNotes for ${key}.`);
         }
-    }, (fadeDuration * 1000) + 50); 
+    }, (fadeDuration * 1000) + 50);
 }
 
 function stopTune(key) {
@@ -295,17 +294,17 @@ function stopTune(key) {
         return;
     }
 
-    const timeElapsed = (audioCtx.currentTime - noteInfo.startTime) * 1000; 
+    const timeElapsed = (audioCtx.currentTime - noteInfo.startTime) * 1000;
     if (timeElapsed < INITIAL_SOUND_MIN_DURATION_MS) {
-        
+
         const delay = INITIAL_SOUND_MIN_DURATION_MS - timeElapsed;
         console.log(`Scheduling stop for ${key} in ${delay.toFixed(2)}ms to meet minimum duration.`);
-        noteInfo.stopScheduled = true; 
+        noteInfo.stopScheduled = true;
         noteInfo.pendingStopTimeout = setTimeout(() => {
-            performStop(key); 
+            performStop(key);
         }, delay);
     } else {
-        
+
         console.log(`Stopping ${key} immediately (min duration met).`);
         performStop(key);
     }
@@ -348,13 +347,13 @@ function isPianoSectionActive() {
     return pianoSection && pianoSection.offsetParent !== null;
 }
 
-let allKeys = []; 
+let allKeys = [];
 pianoKeys.forEach(keyEl => {
     const key = keyEl.dataset.key;
     allKeys.push(key);
     keyEl.addEventListener("mousedown", (event) => {
         if (event.button === 0) {
-            if (!heldMouseKeys.has(key)) { 
+            if (!heldMouseKeys.has(key)) {
                 heldMouseKeys.add(key);
                 playTune(key);
             }
@@ -373,9 +372,9 @@ pianoKeys.forEach(keyEl => {
             stopTune(key);
         }
     });
-    
+
     keyEl.addEventListener("touchstart", (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         if (!heldMouseKeys.has(key)) {
             heldMouseKeys.add(key);
             playTune(key);
@@ -391,7 +390,7 @@ pianoKeys.forEach(keyEl => {
 
 document.addEventListener("keydown", e => {
     const key = e.key.toLowerCase();
-    if (allKeys.includes(key) && !e.repeat && isPianoSectionActive()) {
+    if (allKeys.includes(key) && !e.repeat && isPianoSectionActive()) { 
         e.preventDefault();
         if (!pressedKeys.has(key)) {
             pressedKeys.add(key);
@@ -402,7 +401,7 @@ document.addEventListener("keydown", e => {
 
 document.addEventListener("keyup", e => {
     const key = e.key.toLowerCase();
-    if (allKeys.includes(key) && isPianoSectionActive()) {
+    if (allKeys.includes(key) && isPianoSectionActive()) { 
         if (pressedKeys.has(key)) {
             pressedKeys.delete(key);
             stopTune(key);
@@ -415,60 +414,91 @@ volumeSlider.addEventListener("input", handleVolume);
 
 function stopAllNotesAndClearCache() {
     for (const key in activeNotes) {
-        performStop(key, 0.1); 
+        performStop(key, 0.1);
     }
-    activeNotes = {}; 
-    sampleCache = {}; 
+    activeNotes = {};
+    sampleCache = {};
     console.log("All notes stopped and sample cache cleared.");
 }
 
 languageSwitches.addEventListener("click", (e) => {
     if (e.target.classList.contains("toggle-option")) {
-        
+
         document.querySelectorAll('#language-switches .toggle-option').forEach(option => {
             option.classList.remove('active');
         });
-        
+
         e.target.classList.add('active');
         const selectedLang = e.target.dataset.lang;
         if (selectedLang !== currentLanguage) {
             currentLanguage = selectedLang;
             console.log("Language selected:", currentLanguage);
-            stopAllNotesAndClearCache(); 
+            stopAllNotesAndClearCache();
+            
+            checkAndPreloadPianoSamples();
         }
     }
 });
 
 soundTypeSwitches.addEventListener("click", (e) => {
     if (e.target.classList.contains("toggle-option")) {
-        
+
         document.querySelectorAll('#sound-type-switches .toggle-option').forEach(option => {
             option.classList.remove('active');
         });
-        
+
         e.target.classList.add('active');
         const selectedType = e.target.dataset.type;
         if (selectedType !== currentSoundType) {
             currentSoundType = selectedType;
             console.log("Sound type selected:", currentSoundType);
-            stopAllNotesAndClearCache(); 
+            stopAllNotesAndClearCache();
+            
+            checkAndPreloadPianoSamples();
         }
     }
 });
+
+const warmUpKeys = ['C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F4', 'G4', 'A4',
+    'C#3', 'D#3', 'F#3', 'G#3', 'A#3', 'C#4', 'D#4', 'F#4', 'G#4', 'A#4'
+];
+
+let hasPreloadedInitialPianoSamples = false; 
+
+function checkAndPreloadPianoSamples() {
+    if (isPianoSectionActive()) {
+        console.log("Piano section is active. Attempting to preload warm-up samples.");
+        warmUpKeys.forEach(key => {
+            loadSample(key, currentLanguage, currentSoundType).catch(e => console.error(`Error during conditional pre-load for ${key}:`, e));
+        });
+        hasPreloadedInitialPianoSamples = true; 
+    } else {
+        console.log("Piano section is not active. Skipping preloading of samples.");
+    }
+}
 
 const toneJsScript = document.createElement('script');
 toneJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js';
 toneJsScript.onload = () => {
     console.log('Tone.js loaded successfully!');
     
-    
-    
-    pianoKeys.forEach(keyEl => {
-        const key = keyEl.dataset.key;
-        loadSample(key, currentLanguage, currentSoundType).catch(e => console.error("Error during initial pre-load:", e));
-    });
-    console.log("Initial audio samples pre-load attempt complete for default settings.");
 };
 document.head.appendChild(toneJsScript);
+
 document.addEventListener('click', () => { initAudioContext(); resumeAudioContext(); }, { once: true });
 document.addEventListener('keydown', () => { initAudioContext(); resumeAudioContext(); }, { once: true });
+
+const pianoSection = document.getElementById("piano-section");
+if (pianoSection) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasPreloadedInitialPianoSamples) {
+                
+                console.log("Piano section became visible, triggering initial preload.");
+                checkAndPreloadPianoSamples();
+            }
+        });
+    }, { threshold: 0.1 }); 
+
+    observer.observe(pianoSection);
+}
