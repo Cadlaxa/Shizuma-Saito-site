@@ -3200,6 +3200,7 @@ hr:before {
 
 #image04 {
     text-align: center;
+    transform: scale(1.1125);
 }
 
 #image04 .frame {

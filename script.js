@@ -1948,15 +1948,7 @@
         state: true,
         replay: true
     });
-    onvisible.add('#image04', {
-        style: 'zoom-in',
-        speed: 1000,
-        intensity: 5,
-        threshold: 3,
-        delay: 1250,
-        state: true,
-        replay: false
-    });
+    
     onvisible.add('#audio01', {
         style: 'wipe-reverse-diagonal',
         speed: 1000,
