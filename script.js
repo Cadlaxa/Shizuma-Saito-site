@@ -2066,7 +2066,7 @@
         threshold: 3,
         delay: 1250,
         state: true,
-        replay: true
+        replay: false
     });
     onvisible.add('h1.style1, h2.style1, h3.style1, p.style1', {
         style: 'wipe-right',
@@ -2143,7 +2143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const memes = "resources/memes/"
 const mediaPairs = [
         { image: memes + 'cupcakke1.png', sound: memes + 'augh.mp3' },
-        { image: memes + 'jiafei.jpg', sound: memes + 'jiafei scream.wav' },
+        { image: memes + 'jiafei.jpg', sound: memes + 'jiafei scream.mp3' },
         { image: memes + 'cupcakke.png', sound: memes + 'gulp.mp3' },
     ];
 
