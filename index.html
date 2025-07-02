@@ -142,21 +142,33 @@
                             <div class="inner">
                                 <div>
                                     <ul id="icons02" class="icons">
-                                        <li><a class="n01" href="#" role="button"><svg
-                                                    aria-labelledby="icons02-icon-1-title">
+                                        <li>
+                                            <a class="n01" href="javascript:void(0)" role="button" onclick="history.back()">
+                                                <svg aria-labelledby="icons02-icon-1-title">
                                                     <title id="icons02-icon-1-title">Chevron Left</title>
                                                     <use xlink:href="#icon-a9722e4100c2e8f2afb8e9d4dfc94958"></use>
-                                                </svg><span class="label">Chevron Left</span></a></li>
-                                        <li><a class="n02" href="#" role="button"><svg
-                                                    aria-labelledby="icons02-icon-2-title">
+                                                </svg>
+                                                <span class="label">Chevron Left</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="n02" href="#" role="button">
+                                                <svg aria-labelledby="icons02-icon-2-title">
                                                     <title id="icons02-icon-2-title">Home</title>
                                                     <use xlink:href="#icon-2a747dd19e728944f8c54ef1b55a59c6"></use>
-                                                </svg><span class="label">Home</span></a></li>
-                                        <li><a class="n03" href="#" role="button"><svg
-                                                    aria-labelledby="icons02-icon-3-title">
+                                                </svg>
+                                                <span class="label">Home</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="n03" href="javascript:void(0)" role="button" onclick="history.forward()">
+                                                <svg aria-labelledby="icons02-icon-3-title">
                                                     <title id="icons02-icon-3-title">Chevron Right</title>
                                                     <use xlink:href="#icon-80dc50be409b6c0a58c1f62335c07e7d"></use>
-                                                </svg><span class="label">Chevron Right</span></a></li>
+                                                </svg>
+                                                <span class="label">Chevron Right</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div>
@@ -186,22 +198,37 @@
                                         voicebank</p>
                                     <p id="text02">Play icon on bottom left to play some of my covers of him, long press to shuffle 🥰</p>
                                     <ul id="buttons03" class="buttons">
-                                        <li><a href="#saito" class="button n01" role="button">get this vb!</a></li>
-                                        <li><a href="#tos" class="button n02" role="button">Terms of Service</a></li>
+                                        <li><a class="button n01" id="magicButton" role="button">Diffsinger (soon)</a></li>
+                                        <li><a href="#saito" class="button n02" role="button">Standard (Concat)</a></li>
                                     </ul>
                                     <div id="image03" class="image" data-position="center"><a href="#saito"
                                             class="frame"><img src="resources/banner.webp" alt="" /></a>
                                     </div>
                                 </div>
                                 <div>
-                                    <div id="image01" class="image" data-position="center"><span class="frame"><img
-                                                src="https://cadlaxa-resources.carrd.co/assets/images/image01.jpg?v=775ab12c" alt="" /></span></div>
+                                    <div id="image01" class="image" data-position="center"><a class="frame"><img
+                                                src="https://cadlaxa-resources.carrd.co/assets/images/image01.jpg?v=775ab12c" alt="" /></a></div>
+                                                
                                     <p id="text05" class="style1">HI!! welcome</p>
-                                    <p id="text04" class="style3"><span class="p">v102 is OUT!!!!<br /> - Cleaned
-                                            samples with UVR<br /> - New Tagalog CVVC bundled vb<br /> - Edited oto
-                                            (overlap is now half the preutterance)<br />- New phonemes for en: <code>ll</code>, <code>rr</code> <br />- Compiled icons and art folder <br /> <code>wiki link:</code> <a
-                                                href="https://utau.fandom.com/wiki/Shizuma_Saito">Shizuma
-                                                Saito</a></span></p>
+                                    <p id="text04" class="style3 scrollable-bullets">
+                                        <span class="p"><strong>Separated VB Release</strong><br />
+                                            - Separate VB for:<br />
+                                            &nbsp &nbsp JA CVVC<br />
+                                            &nbsp &nbsp FIL CVVC<br />
+                                            <code>compatible with og utau</code>
+                                        </span>
+                                        <span class="p"><strong>v102 is OUT!!!!</strong><br />
+                                            - Cleaned samples with UVR<br />
+                                            - New Tagalog CVVC bundled vb<br />
+                                            - Edited oto (overlap is now half the preutterance)<br />
+                                            - New phonemes for en: <code>ll</code>, <code>rr</code><br />
+                                            - Compiled icons and art folder
+                                        </span>
+                                    </p>
+                                    <p id="text04" class="style3">
+                                        <code><strong>wiki link:</strong></code> <a
+                                            href="https://utau.fandom.com/wiki/Shizuma_Saito"><strong>Shizuma Saito</strong></a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -338,8 +365,16 @@
                                     <ul id="buttons01" class="buttons">
                                         <li><a href="#pianotune"
                                                 class="button n01" role="button">Try me</a></li>
-                                        <li><a href="https://drive.google.com/drive/folders/1mpHOrEJTh8bVw270-6vbKW1Ikx7SnW1V"
-                                                class="button n02" role="button">V102 (Latest)</a></li>
+                                        <li>
+                                            <div class="button-row">
+                                                <a href="https://drive.google.com/drive/folders/1mpHOrEJTh8bVw270-6vbKW1Ikx7SnW1V"
+                                                        class="button n02" target="_blank" rel="noopener noreferrer" role="button">
+                                                        V102 Bundled</a>
+                                                <a href="https://drive.google.com/drive/folders/1GyPDGL5e4-RDfzW01yl_JJ-alELPeB1r?usp=sharing"
+                                                        class="button n03" target="_blank" rel="noopener noreferrer" role="button">
+                                                        V102 Separated</a>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -1213,17 +1248,17 @@
                                 <div class="control-group">
                                     <span>Language</span>
                                     <div class="toggle-options" id="language-switches">
-                                        <div class="toggle-option active" data-lang="en">EN</div>
-                                        <div class="toggle-option" data-lang="ja">JP</div>
-                                        <div class="toggle-option" data-lang="fil">FIL</div>
+                                        <i class="toggle-option active" data-lang="en">EN</i>
+                                        <i class="toggle-option" data-lang="ja">JP</i>
+                                        <i class="toggle-option" data-lang="fil">FIL</i>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <span>Sound Type</span>
                                     <div class="toggle-options" id="sound-type-switches">
-                                        <div class="toggle-option active" data-type="core">Core</div>
-                                        <div class="toggle-option" data-type="soft">Soft</div>
+                                        <i class="toggle-option active" data-type="core">Core</i>
+                                        <i class="toggle-option" data-type="soft">Soft</i>
                                     </div>
                                 </div>
                             </div>

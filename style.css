@@ -105,6 +105,62 @@ body {
     line-height: 1;
     transition: background-color 0.8s ease, color 0.5s ease;
 }
+/* temporary */
+.popup-image {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border-radius: 0.5rem;
+}
+
+.popup-image.show {
+    opacity: 1;
+    transform: scale(4);
+}
+/* end */
+
+.scrollable-bullets {
+    background-color: #fdf8e9;
+    border-radius: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 0.5em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+}
+
+.scrollable-bullets ul {
+    padding-left: 1.2em;
+    margin: 0;
+}
+
+.scrollable-bullets li {
+    line-height: 1.4em;
+    margin-bottom: 0.4em;
+}
+/**/
+.scrollable-bullets::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollable-bullets::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollable-bullets::-webkit-scrollbar-thumb {
+    background-color:#feaf32;;
+    border-radius: 3px;
+}
+
+.scrollable-bullets {
+    scrollbar-width: thin;              /* Firefox */
+    scrollbar-color: #feaf32 transparent;
+}
 
 .carousel-container {
     position: relative;
@@ -2567,6 +2623,12 @@ hr:before {
     border-radius: 0px;
 }
 
+.button-row {
+    display: flex;
+    gap:  0.5rem;
+    flex-wrap: nowrap;
+}
+
 .buttons {
     cursor: default;
     display: flex;
@@ -2675,20 +2737,21 @@ hr:before {
 }
 
 #buttons01 li a {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
-    height: 3rem;
-    line-height: 3rem;
-    padding: 0 1.5rem;
-    vertical-align: middle;
+    min-height: 3rem;
+    padding: 0.5rem;
     font-family: 'Gloock', serif;
     letter-spacing: 0.175rem;
-    padding-left: calc(0.175rem + 1.5rem);
     font-size: 1em;
     font-weight: 400;
     border-radius: 0.625rem;
     direction: var(--site-language-direction);
-    overflow: hidden;
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-align: center;
     text-overflow: ellipsis;
     transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
 }

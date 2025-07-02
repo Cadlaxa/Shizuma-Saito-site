@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let firstInteractionOccurred = false;
 
     const interactiveSelectors = `
-        a, button, image, input, select, textarea,
+        a, button, image, input, select, textarea, i, input,
         [role="button"], [role="link"], [role="checkbox"],
         [role="radio"], [role="switch"], 
         [tabindex]:not([tabindex="-1"]),

@@ -1946,7 +1946,7 @@
         threshold: 3,
         delay: 1250,
         state: true,
-        replay: true
+        replay: false
     });
     
     onvisible.add('#audio01', {
@@ -1981,7 +1981,7 @@
         speed: 1000,
         intensity: 5,
         threshold: 3,
-        delay: 1375,
+        delay: 2000,
         state: true,
         replay: false
     });
@@ -2084,7 +2084,7 @@
         threshold: 3,
         delay: 1250,
         state: true,
-        replay: true
+        replay: false
     });
     onvisible.add('#buttons03', {
         style: 'pop-in',
@@ -2092,7 +2092,7 @@
         intensity: 5,
         threshold: 3,
         delay: 1750,
-        stagger: 250,
+        stagger: 450,
         staggerSelector: ':scope > li',
         state: true,
         replay: true
@@ -2104,7 +2104,7 @@
         threshold: 3,
         delay: 1250,
         state: true,
-        replay: true
+        replay: false
     });
     ready.run();
 })();
@@ -2138,3 +2138,52 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
     slideInterval = setInterval(autoSlide, 7000);
 });
+
+// temporary
+const memes = "resources/memes/"
+const mediaPairs = [
+        { image: memes + 'cupcakke1.png', sound: memes + 'augh.mp3' },
+        { image: memes + 'jiafei.jpg', sound: memes + 'jiafei scream.wav' },
+        { image: memes + 'cupcakke.png', sound: memes + 'gulp.mp3' },
+    ];
+
+    const button = document.getElementById('magicButton');
+
+    // Prevent overlapping triggers
+    let isPlaying = false;
+
+    button.addEventListener('click', () => {
+        if (isPlaying) return;
+
+        const pair = mediaPairs[Math.floor(Math.random() * mediaPairs.length)];
+        const audio = new Audio(pair.sound);
+
+        // Set playing state
+        isPlaying = true;
+        audio.play();
+
+        // Create image element
+        const img = document.createElement('img');
+        img.src = pair.image;
+        img.className = 'popup-image';
+
+        const rect = button.getBoundingClientRect();
+        img.style.left = `${rect.left + window.scrollX + rect.width / 2 - 32}px`;
+        img.style.top = `${rect.top + window.scrollY + rect.height / 2 - 32}px`;
+
+        document.body.appendChild(img);
+
+        // Trigger animation
+        requestAnimationFrame(() => {
+            img.classList.add('show');
+        });
+
+        // Remove image after sound ends
+        audio.addEventListener('ended', () => {
+            img.classList.remove('show');
+            setTimeout(() => {
+                img.remove();
+                isPlaying = false;
+            }, 300);
+        });
+    });
