@@ -2106,6 +2106,17 @@
         state: true,
         replay: false
     });
+    onvisible.add('#button-row', {
+        style: 'zoom-in',
+        speed: 1000,
+        intensity: 5,
+        threshold: 3,
+        delay: 1500,
+        stagger: 125,
+        staggerSelector: ':scope > li',
+        state: true,
+        replay: true
+    });
     ready.run();
 })();
 

@@ -105,6 +105,75 @@ body {
     line-height: 1;
     transition: background-color 0.8s ease, color 0.5s ease;
 }
+
+.download-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #ffd47d 20%, #ffaa00 100%);
+  border-radius: 20px;
+  padding: 12px 10px;
+  margin: 12px;
+  text-decoration: none;
+  color: #FFF7E8;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  width: 300px;
+  height: 120px;
+}
+
+.badge-wrapper {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.badge-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ee582b;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.icon-bg {
+  width: 100px;
+  height: 100px;
+  background-color: #fdf8e9;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-text-wrapper {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.card-text {
+  font-size: 22px;
+  display: inline-block;
+}
+
 /* temporary */
 .popup-image {
     position: absolute;
@@ -2625,7 +2694,6 @@ hr:before {
 
 .button-row {
     display: flex;
-    gap:  0.5rem;
     flex-wrap: nowrap;
 }
 
