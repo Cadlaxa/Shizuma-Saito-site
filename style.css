@@ -174,6 +174,49 @@ body {
   display: inline-block;
 }
 
+@media (max-width: 768px) { 
+  #buttons01 {
+    display: flex;
+    align-items: center; 
+    padding: 0; 
+  }
+
+  #buttons01 li {
+    width: 95%; 
+    display: flex; 
+    justify-content: center; 
+  }
+
+  .button-row {
+    flex-direction: column; 
+    width: 100%; 
+    align-items: center; 
+  }
+
+  .download-card {
+    width: calc(100% - 24px); 
+    max-width: 350px; 
+    height: auto; 
+    padding: 20px 10px; 
+  }
+
+  .icon-bg {
+    margin-left: -15px; 
+    width: 130px;
+    height: 130px;
+  }
+
+  .card-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   }
+
+  .card-text-wrapper {
+    text-align: center; 
+  }
+}
+
 /* temporary */
 .popup-image {
     position: absolute;
