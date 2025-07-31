@@ -173,6 +173,11 @@ body {
   font-size: 22px;
   display: inline-block;
 }
+.card-text-mini {
+  font-family: 'Lucida Console';
+  font-size: 11px;
+  display: inline-block;
+}
 
 @media (max-width: 768px) { 
   #buttons01 {
@@ -192,6 +197,14 @@ body {
     width: 100%; 
     align-items: center; 
   }
+
+  .card-text-mini {
+    font-family: 'Lucida Console';
+    font-size: 11px;
+    display: flex; 
+    justify-content: center; 
+    padding-top: 10px;
+ }
 
   .download-card {
     width: calc(100% - 24px); 

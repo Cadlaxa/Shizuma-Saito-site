@@ -21,7 +21,8 @@ async function fetchMusicFiles() {
         'resources/covers/headlock.mp3',
         'resources/covers/static tagalog ver full.mp3',
         'resources/covers/ao no sumika.mp3',
-        'resources/covers/dance delightful short.mp3'
+        'resources/covers/dance delightful short.mp3',
+        'resources/covers/nro.mp3'
     ];
     console.log("Music files fetched:", musicFiles);
 }
