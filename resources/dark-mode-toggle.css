@@ -3,7 +3,7 @@ div.dark-mode-toggle {
     position: fixed; /* place on a fixed position on the page */
     bottom: 10px; /* set position to be 8px from the bottom of the window */
     left: 10px; /* 8px from the left side of the window */
-    z-index: 1000; /* display above other elements */
+    z-index: 2000; /* display above other elements */
     cursor: pointer; /* when hovering, you will get a pointer indicating you can click */
     background: #ffcb72; /* set initial background color (will be overriden for dark mode by DarkReader) */
     color: #805100; /* set initial icon color */

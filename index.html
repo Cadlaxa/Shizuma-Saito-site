@@ -65,6 +65,7 @@
     <meta name="theme-color" content="#fff4d6" />
     <link href="resources/icon1.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="resources/icon1.png" rel="apple-touch-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body class="is-loading"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -125,6 +126,97 @@
         <source src="#" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+
+    <div id="modal-overlay">
+        <div class="audio-demo-container">
+            <div class="audio-demo-card">
+                <div class="card-content">
+                    <div class="description-section">
+                        <div class="profile-header">
+                            <img src="resources/icon1.png" alt="Saito Profile Icon" class="profile-icon">
+                            <div class="profile-text">
+                                <h2 class="voicebank-name">Shizuma Saito</h2>
+                                <span class="company-name">靜間彩冬</span>
+                            </div>
+                            <button id="close-popup-btn" class="close-button">&times;</button>
+                        </div>
+                        <p>
+                            Shizuma Saito (靜間彩冬) is a trilingual UTAU voicebank that supports English, Filipino and Japanese. He has a quadpitch CVVC
+                            and Arpasing configuration, which are technical terms for the way his voicebank is organized to allow for more natural and flexible singing.
+                        </p>
+                        <br>
+                        <ul>
+                            <li>
+                                <strong>- 靜間 (Shizuma):</strong> <p>This means "quiet" or "calm space."</p>
+                            </li>
+                            <li>
+                                <strong>- 彩冬 (Saito):</strong> <p>This translates to "colorful" or "vivid winter."</p>
+                            </li>
+                        </ul>
+
+                        <a href="https://utau.fandom.com/wiki/Shizuma_Saito" target="_blank" rel="noopener noreferrer" class="official-site-link">
+                            <i class="fa fa-globe"></i> Wiki Site
+                        </a>
+                    </div>
+                        <div class="video-section">
+                            <div class="video-carousel">
+                                <div class="carousel-slides">
+                                    <a href="https://youtu.be/i5iPMbLDJOQ" class="youtube-link active" target="_blank" rel="noopener noreferrer">
+                                        <div class="youtube-placeholder">
+                                            <img src="https://i.ytimg.com/vi/i5iPMbLDJOQ/hqdefault.jpg" alt="Video 1 thumbnail">
+                                            <div class="play-overlay">
+                                                <i class="fa fa-play-circle"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="https://youtu.be/sK1isWh202U" class="youtube-link" target="_blank" rel="noopener noreferrer">
+                                        <div class="youtube-placeholder">
+                                            <img src="https://i.ytimg.com/vi/sK1isWh202U/hqdefault.jpg" alt="Video 2 thumbnail">
+                                            <div class="play-overlay">
+                                                <i class="fa fa-play-circle"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="https://youtu.be/bOEFwmnsCfA" class="youtube-link" target="_blank" rel="noopener noreferrer">
+                                        <div class="youtube-placeholder">
+                                            <img src="https://i.ytimg.com/vi/bOEFwmnsCfA/hqdefault.jpg" alt="Video 3 thumbnail">
+                                            <div class="play-overlay">
+                                                <i class="fa fa-play-circle"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <div class="carousel-indicators">
+                                <button class="indicator active"></button>
+                                <button class="indicator"></button>
+                                <button class="indicator"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="audio-control-bar">
+                    <audio id="audio-player" src="" controls></audio>
+                    
+                    <div class="dropdown-group">
+                        <div class="dropdown-container" id="song-dropdown">
+                            <div class="dropdown-trigger">
+                                <span class="selected-text">Select a Song</span>
+                                <span class="dropdown-arrow">&#9662;</span>
+                            </div>
+                            <ul class="dropdown-menu"></ul>
+                        </div>
+                        <div class="dropdown-container" id="vocal-mode-dropdown">
+                            <div class="dropdown-trigger">
+                                <span class="selected-text">Select Vocal Mode</span>
+                                <span class="dropdown-arrow">&#9662;</span>
+                            </div>
+                            <ul class="dropdown-menu"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div class="main" id="luxy">
     <div id="wrapper">
@@ -246,7 +338,7 @@
                                     </p>
                                     <p id="text04" class="style3">
                                         <code><strong>wiki link:</strong></code> <a
-                                            href="https://utau.fandom.com/wiki/Shizuma_Saito"><strong>Shizuma Saito</strong></a>
+                                            href="https://utau.fandom.com/wiki/Shizuma_Saito" target="_blank" rel="noopener noreferrer" ><strong>Shizuma Saito</strong></a>
                                     </p>
                                 </div>
                             </div>
@@ -263,8 +355,8 @@
                                         trilingual, bi-append UTAU voicebank. He&#39;s a college student who loves
                                         programming, especially coding-related tasks, and he owns a small café. He loves
                                         cats and enjoys spending his free time with them.</span><span
-                                        class="p"><code>art by me @cadlaxa</code><br /> <code>wiki link:</code> <a
-                                            href="https://utau.fandom.com/wiki/Shizuma_Saito">Shizuma Saito - Utau
+                                        class="p"><code> <i class="fa-solid fa-paintbrush"></i> art by me @cadlaxa</code><br /> <code><i class="fa fa-globe"></i> wiki link:</code> <a
+                                            href="https://utau.fandom.com/wiki/Shizuma_Saito" target="_blank" rel="noopener noreferrer" >Shizuma Saito - Utau
                                             wiki</a></span></p>
                             </div>
                         </div>
@@ -313,11 +405,14 @@
                                 </div>
                                 
                                 <div>
-                                    <div id="audio01" class="audio">
-                                        <div class="frame"><iframe
-                                                data-src="https://drive.google.com/file/d/1le9HYN57kRsizL-kstBlupkvesB-t_rq/preview"></iframe>
-                                        </div>
-                                    </div>
+                                    <ul id="buttons01" class="buttons">
+                                        <li> 
+                                            <div class="badge-wrapper">
+                                                <a class="button n02 open-popup-btn" role="button" > <i class="fa-solid fa-volume-high"></i>Demos</a>
+                                                <div class="badge">listen to me</div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                     <div id="table02" class="table-wrapper">
                                         <div class="table-inner">
                                             <table>
@@ -383,9 +478,9 @@
                                     </div>
                                     <ul id="buttons01" class="buttons">
                                         <li><a href="#pianotune"
-                                                class="button n01" role="button">Try me</a></li>
+                                                class="button n01" role="button"><i class="fa-solid fa-music"></i> Try me</a></li>
                                         <li> <a href="#download"
-                                                class="button n02" role="button">Download</a>
+                                                class="button n02" role="button"><i class="fa-solid fa-download"></i> Download</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -1248,7 +1343,7 @@
                         </div>
                     </div>
                     <ul id="buttons06" class="buttons">
-                        <li><a href="#scrollpoint1" class="button n01" role="button">scroll up</a></li>
+                        <li><a href="#scrollpoint1" class="button n01" role="button"><i class="fa-solid fa-arrow-up"></i> scroll up</a></li>
                     </ul>
                 </section>
                 
@@ -1574,5 +1669,6 @@
 	</script>
     <script src="resources/clicks.js"></script>
     <script src="resources/piano.js"></script>
+    <script src="resources/demo.js"></script>
 </body>
 </html>
