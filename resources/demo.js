@@ -64,6 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.classList.add('is-open');
         document.body.classList.add('modal-open');
         initialize();
+        // Push a new state to the history when the modal opens
+        // This is what makes the back button work with the modal
+        history.pushState({ modalOpen: true }, '', '#demo-open');
     }
 
     function closeModal() {
@@ -77,18 +80,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    openPopupBtn.addEventListener('click', openModal);
-    closePopupBtn.addEventListener('click', closeModal);
+    if (openPopupBtn) {
+        openPopupBtn.addEventListener('click', openModal);
+    }
+    
+    if (closePopupBtn) {
+        closePopupBtn.addEventListener('click', () => {
+            closeModal();
+            // This prevents a redundant history navigation
+            
+        });
+    }
 
     modalOverlay.addEventListener('click', (e) => {
         if (e.target === modalOverlay) {
             closeModal();
+            if (history.state && history.state.modalOpen) {
+                history.back();
+            }
         }
     });
 
+    // Event listener for the browser's back button on both mobile and desktop
     window.addEventListener('popstate', (event) => {
-        // If the modal was open, close it. Otherwise, do nothing.
-        if (event.state && event.state.modalOpen) {
+        // Only close the modal if the back button navigation leads to a state where the modal is not expected
+        if (modalOverlay.classList.contains('is-open') && (!event.state || !event.state.modalOpen)) {
             closeModal();
         }
     });
@@ -214,9 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
             vocalModeDropdownContainer.classList.remove('open');
         }
     });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
+    // CAROUSEL LOGIC
     const slides = document.querySelectorAll('.carousel-slides .youtube-link');
     const indicators = document.querySelectorAll('.carousel-indicators button');
     const carouselSlidesContainer = document.querySelector('.carousel-slides');
