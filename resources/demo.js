@@ -86,6 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    window.addEventListener('popstate', (event) => {
+        // If the modal was open, close it. Otherwise, do nothing.
+        if (event.state && event.state.modalOpen) {
+            closeModal();
+        }
+    });
+
     // --- Dropdown and Audio Player Logic ---
     function initialize() {
         songMenu.innerHTML = '';
