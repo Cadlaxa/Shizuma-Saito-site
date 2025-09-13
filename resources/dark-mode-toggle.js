@@ -12,7 +12,7 @@ function toggleDarkMode(newState, playSound = true, updateCookie = true) {
     if (newState === "on" && currentMode !== "on") {
         DarkReader.enable({ contrast: 110 });
         document.querySelector("div.dark-mode-toggle").firstElementChild.className = "gg-sun";
-        if (updateCookie) setCookie("darkmode", "on", 9999);
+        // if (updateCookie) setCookie("darkmode", "on", 9999);
         if (playSound) {
             darkModeSound.currentTime = 0;
             darkModeSound.play();
@@ -21,7 +21,7 @@ function toggleDarkMode(newState, playSound = true, updateCookie = true) {
     } else if (newState === "off" && currentMode !== "off") {
         DarkReader.disable();
         document.querySelector("div.dark-mode-toggle").firstElementChild.className = "gg-moon";
-        if (updateCookie) setCookie("darkmode", "off", 9999);
+        // if (updateCookie) setCookie("darkmode", "off", 9999);
         if (playSound) {
             lightModeSound.currentTime = 0;
             lightModeSound.play();
